@@ -38,7 +38,7 @@ def build_claims(user, token_type: str):
     Common claims added inside JWT payload
     """
     return {
-        "user_id": str(user.id),
+        "user_id": str(user.user_id),
         "name": user.full_name,
         "email": user.email,
         "token_type": token_type
@@ -55,27 +55,27 @@ def create_tokens_for_user(user):
     Generates access, refresh and id tokens for authenticated user
     """
 
-    if not user or not user.id:
+    if not user or not user.user_id:
         raise ValueError("Invalid user data")
 
     try:
         access_token = create_access_token(
-            identity=str(user.id),
+            identity=str(user.user_id),
             additional_claims=build_claims(user, "access"),
             expires_delta=ACCESS_EXPIRES
         )
 
         refresh_token = create_refresh_token(
-            identity=str(user.id),
+            identity=str(user.user_id),
             additional_claims={
-                "user_id": str(user.id),
+                "user_id": str(user.user_id),
                 "token_type": "refresh"
             },
             expires_delta=REFRESH_EXPIRES
         )
 
         id_token = create_access_token(
-            identity=str(user.id),
+            identity=str(user.user_id),
             additional_claims=build_claims(user, "id"),
             expires_delta=ID_TOKEN_EXPIRES
         )
@@ -101,12 +101,12 @@ def create_access_token_for_refresh(user):
     Generates a new access token using valid refresh token
     """
 
-    if not user or not user.id:
+    if not user or not user.user_id:
         raise ValueError("Invalid user data for refresh")
 
     try:
         return create_access_token(
-            identity=str(user.id),
+            identity=str(user.user_id),
             additional_claims=build_claims(user, "access"),
             expires_delta=ACCESS_EXPIRES
         )

@@ -12,5 +12,9 @@ class User(db.Model):
 
     expenses = db.relationship("Expense", backref="user", cascade="all, delete", lazy=True)
 
+    @property 
+    def id(self): 
+        return self.user_id
+
     def __repr__(self):
         return f"<User {self.email}>"

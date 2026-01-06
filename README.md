@@ -92,6 +92,7 @@ Authorization: Bearer <access_token>
 
     ```bash
     python -m venv .venv
+    
     ```
 
 ### 2.Activate the Virtual Environment
@@ -100,9 +101,11 @@ Authorization: Bearer <access_token>
 
     ```bash
     .venv\Scripts\Activate
+
     ```
 
 ### 3. Install Dependencies
     ```bash
     pip install -r requirements.txt
+
     ```

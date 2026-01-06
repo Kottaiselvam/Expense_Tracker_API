@@ -16,5 +16,10 @@ class Expense(db.Model):
     notes = db.Column(db.Text)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
+    @property
+    def id(self):
+        return self.expense_id
+
+
     def __repr__(self):
         return f"<Expense {self.category} - {self.amount}>"
