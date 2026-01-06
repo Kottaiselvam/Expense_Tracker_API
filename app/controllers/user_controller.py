@@ -31,7 +31,7 @@ def get_user_profile():
         return jsonify({
             "message": "User profile fetched successfully",
             "user": {
-                "id": user.id,
+                "user_id": user.user_id,
                 "full_name": user.full_name,
                 "email": user.email,
                 "created_at": user.created_at
@@ -83,7 +83,7 @@ def update_user_profile():
         return jsonify({
             "message": "User profile updated successfully",
             "user": {
-                "id": user.id,
+                "user_id": user.user_id,
                 "full_name": user.full_name,
                 "email": user.email
             }

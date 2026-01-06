@@ -63,7 +63,7 @@ def signup():
         return jsonify({
             "message": "User registered successfully",
             "user": {
-                "id": user.id,
+                "user_id": user.user_id,
                 "full_name": user.full_name,
                 "email": user.email
             }
@@ -119,7 +119,7 @@ def login():
             "refresh_token": tokens["refresh_token"],
             "id_token": tokens["id_token"],
             "user": {
-                "id": user.id,
+                "user_id": user.user_id,
                 "full_name": user.full_name,
                 "email": user.email
             }

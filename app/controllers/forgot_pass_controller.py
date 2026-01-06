@@ -17,7 +17,7 @@ def forgot_password():
     1. Accept email from user
     2. Validate email
     3. Check user exists
-    4. Generate OTP and send (console for demo)
+    4. Generate OTP and send (console(Terminal) for demo)
     """
     try:
         data = request.get_json() or {}
