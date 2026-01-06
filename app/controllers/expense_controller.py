@@ -128,7 +128,7 @@ def update_expense(expense_id):
         user_id = get_current_user_id()
         data = request.get_json() or {}
 
-        expense = Expense.query.filter_by(id=expense_id, user_id=user_id).first()
+        expense = Expense.query.filter_by(expense_id=expense_id, user_id=user_id).first()
         if not expense:
             return jsonify({"message": "Expense not found"}), 404
 
@@ -180,7 +180,7 @@ def delete_expense(expense_id):
     try:
         user_id = get_current_user_id()
 
-        expense = Expense.query.filter_by(id=expense_id, user_id=user_id).first()
+        expense = Expense.query.filter_by(expense_id=expense_id, user_id=user_id).first()
         if not expense:
             return jsonify({"message": "Expense not found"}), 404
 
